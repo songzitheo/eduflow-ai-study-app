@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Instructions: Replace YOUR_GITHUB_USERNAME with your actual GitHub username
-# Then run: bash SETUP_NEW_REPO.sh
+# Instructions: This script will push your code to your GitHub repository
+# Run: bash SETUP_NEW_REPO.sh
 
-# Change this to your GitHub username
-GITHUB_USERNAME="YOUR_GITHUB_USERNAME"
+# Your GitHub username
+GITHUB_USERNAME="songzitheo"
 
-# Change this to your desired repository name
+# Your repository name
 REPO_NAME="eduflow-ai-study-app"
 
 echo "Setting up new GitHub repository..."
