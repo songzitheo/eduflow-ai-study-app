@@ -2,8 +2,8 @@
 
 import { revalidatePath } from 'next/cache';
 
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 import { openaiClient } from '@/features/study/lib/openai-client';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 export async function generateDiagnosticQuestions(formData: FormData): Promise<void> {
   try {

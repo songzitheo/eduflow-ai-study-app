@@ -1,8 +1,10 @@
 import { redirect } from 'next/navigation';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { DiagnosticQuestionsClient } from './diagnostic-questions-client';
-import { BookOpen, Calendar, CheckCircle2, Clock } from 'lucide-react';
 import { format } from 'date-fns';
+import { BookOpen, Calendar, CheckCircle2, Clock } from 'lucide-react';
+
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
+
+import { DiagnosticQuestionsClient } from './diagnostic-questions-client';
 
 export default async function StudyDetailPage({
   params,
@@ -146,7 +148,7 @@ export default async function StudyDetailPage({
                       Ready for Learning Plan
                     </h3>
                     <p className="text-gray-700 mb-4">
-                      You've completed all diagnostic questions! Generate your personalized learning plan based on your responses.
+                      You&apos;ve completed all diagnostic questions! Generate your personalized learning plan based on your responses.
                     </p>
                     <a
                       href={`/study/${params.id}/plan`}

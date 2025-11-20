@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import { BookOpen, Brain, Calendar, CheckCircle2, Sparkles, Target } from 'lucide-react';
+
 import { Container } from '@/components/container';
 import { Button } from '@/components/ui/button';
-import { BookOpen, Brain, Calendar, Target, Sparkles, CheckCircle2 } from 'lucide-react';
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { redirect } from 'next/navigation';
 
 export default async function HomePage() {
   const supabase = await createSupabaseServerClient();

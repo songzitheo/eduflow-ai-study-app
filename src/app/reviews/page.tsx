@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';

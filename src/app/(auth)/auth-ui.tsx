@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from 'react';
 import Link from 'next/link';
+import { GraduationCap } from 'lucide-react';
 import { IoLogoGoogle } from 'react-icons/io5';
 
 import { Button } from '@/components/ui/button';
@@ -9,7 +10,6 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
 import { ActionResponse } from '@/types/action-response';
-import { GraduationCap } from 'lucide-react';
 
 const titleMap = {
   login: 'Welcome back to EduFlow',

@@ -1,9 +1,10 @@
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { Button } from '@/components/ui/button';
-import { BookOpen, Plus, Calendar, TrendingUp, Clock } from 'lucide-react';
+import { redirect } from 'next/navigation';
 import { format } from 'date-fns';
+import { BookOpen, Calendar, Clock, Plus, TrendingUp } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 export default async function DashboardPage() {
   const supabase = await createSupabaseServerClient();

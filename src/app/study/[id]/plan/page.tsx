@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
@@ -64,7 +64,7 @@ export default async function StudyPlanPage({ params }: { params: { id: string }
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-3">Generate Your Learning Plan</h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                Based on your diagnostic answers, we'll create a personalized macro-meso-micro learning plan with spaced repetition reviews.
+                Based on your diagnostic answers, we&apos;ll create a personalized macro-meso-micro learning plan with spaced repetition reviews.
               </p>
               <form action={generateStudyPlan}>
                 <input type="hidden" name="studySourceId" value={id} />
@@ -172,7 +172,7 @@ export default async function StudyPlanPage({ params }: { params: { id: string }
 
         {/* Next Steps */}
         <div className="mt-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
-          <h3 className="text-xl font-bold mb-2 text-gray-900">What's Next? 📚</h3>
+          <h3 className="text-xl font-bold mb-2 text-gray-900">What&apos;s Next? 📚</h3>
           <p className="text-gray-600 mb-4">
             Your spaced repetition review schedule has been created. Check back at the scheduled
             times to reinforce your learning.
