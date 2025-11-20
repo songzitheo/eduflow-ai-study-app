@@ -2,7 +2,11 @@ import Stripe from 'stripe';
 
 import { getEnvVar } from '@/utils/get-env-var';
 
-export const stripeAdmin = new Stripe(getEnvVar(process.env.STRIPE_SECRET_KEY, 'STRIPE_SECRET_KEY'), {
+// Use a placeholder key during build if STRIPE_SECRET_KEY is not set
+// This allows the app to build without Stripe configured
+const stripeKey = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder_key_for_build';
+
+export const stripeAdmin = new Stripe(stripeKey, {
   // https://github.com/stripe/stripe-node#configuration
   apiVersion: '2023-10-16',
   // Register this as an official Stripe plugin.

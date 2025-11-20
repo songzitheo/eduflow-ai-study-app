@@ -20,7 +20,13 @@ const relevantEvents = new Set([
 export async function POST(req: Request) {
   const body = await req.text();
   const sig = req.headers.get('stripe-signature') as string;
-  const webhookSecret = getEnvVar(process.env.STRIPE_WEBHOOK_SECRET, 'STRIPE_WEBHOOK_SECRET');
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  
+  // Return early if Stripe is not configured
+  if (!webhookSecret || !process.env.STRIPE_SECRET_KEY) {
+    return Response.json({ error: 'Stripe not configured' }, { status: 400 });
+  }
+  
   let event: Stripe.Event;
 
   try {
