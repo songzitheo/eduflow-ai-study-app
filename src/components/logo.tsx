@@ -1,18 +1,13 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import { GraduationCap } from 'lucide-react';
 
 export function Logo() {
   return (
-    <Link href='/' className='flex w-fit items-center gap-2'>
-      <Image
-        src='/logo.png'
-        width={40}
-        height={40}
-        priority
-        quality={100}
-        alt='UPDATE_THIS_WITH_YOUR_APP_DISPLAY_NAME logo mark'
-      />
-      <span className='font-alt text-xl text-white'>UPDATE_THIS_WITH_YOUR_APP_DISPLAY_NAME</span>
+    <Link href='/' className='flex w-fit items-center gap-2 group'>
+      <div className='bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-2 group-hover:from-blue-600 group-hover:to-purple-700 transition-all'>
+        <GraduationCap className='w-6 h-6 text-white' />
+      </div>
+      <span className='font-semibold text-xl text-gray-900'>EduFlow</span>
     </Link>
   );
 }

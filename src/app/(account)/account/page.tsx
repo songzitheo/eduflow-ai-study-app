@@ -31,32 +31,34 @@ export default async function AccountPage() {
   }
 
   return (
-    <section className='rounded-lg bg-black px-4 py-16'>
-      <h1 className='mb-8 text-center'>Account</h1>
+    <div className='min-h-screen bg-white'>
+      <div className='max-w-7xl mx-auto px-4 py-16'>
+        <h1 className='mb-8 text-center text-3xl font-bold text-gray-900'>Account</h1>
 
-      <div className='flex flex-col gap-4'>
-        <Card
-          title='Your Plan'
-          footer={
-            subscription ? (
-              <Button size='sm' variant='secondary' asChild>
-                <Link href='/manage-subscription'>Manage your subscription</Link>
-              </Button>
+        <div className='flex flex-col gap-4'>
+          <Card
+            title='Your Plan'
+            footer={
+              subscription ? (
+                <Button size='sm' className='bg-blue-600 hover:bg-blue-700' asChild>
+                  <Link href='/manage-subscription'>Manage your subscription</Link>
+                </Button>
+              ) : (
+                <Button size='sm' className='bg-blue-600 hover:bg-blue-700' asChild>
+                  <Link href='/pricing'>Start a subscription</Link>
+                </Button>
+              )
+            }
+          >
+            {userProduct && userPrice ? (
+              <PricingCard product={userProduct} price={userPrice} />
             ) : (
-              <Button size='sm' variant='secondary' asChild>
-                <Link href='/pricing'>Start a subscription</Link>
-              </Button>
-            )
-          }
-        >
-          {userProduct && userPrice ? (
-            <PricingCard product={userProduct} price={userPrice} />
-          ) : (
-            <p>You don&apos;t have an active subscription</p>
-          )}
-        </Card>
+              <p className='text-gray-600'>You don&apos;t have an active subscription</p>
+            )}
+          </Card>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -69,12 +71,12 @@ function Card({
   footer?: ReactNode;
 }>) {
   return (
-    <div className='m-auto w-full max-w-3xl rounded-md bg-zinc-900'>
-      <div className='p-4'>
-        <h2 className='mb-1 text-xl font-semibold'>{title}</h2>
+    <div className='m-auto w-full max-w-3xl rounded-xl bg-white border border-gray-200 shadow-sm'>
+      <div className='p-6'>
+        <h2 className='mb-1 text-xl font-semibold text-gray-900'>{title}</h2>
         <div className='py-4'>{children}</div>
       </div>
-      <div className='flex justify-end rounded-b-md border-t border-zinc-800 p-4'>{footer}</div>
+      <div className='flex justify-end rounded-b-xl border-t border-gray-200 p-4 bg-gray-50'>{footer}</div>
     </div>
   );
 }

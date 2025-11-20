@@ -38,10 +38,16 @@ export function AccountMenu({ signOut }: { signOut: () => Promise<ActionResponse
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='rounded-full'>
-        <IoPersonCircleOutline size={24} />
+      <DropdownMenuTrigger className='rounded-full hover:bg-gray-100 p-1 transition-colors'>
+        <IoPersonCircleOutline size={28} className="text-gray-700" />
       </DropdownMenuTrigger>
       <DropdownMenuContent className='me-4'>
+        <DropdownMenuItem asChild>
+          <Link href='/dashboard'>Dashboard</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href='/reviews'>Reviews</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link href='/account'>Account</Link>
         </DropdownMenuItem>

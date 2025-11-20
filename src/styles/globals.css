@@ -95,13 +95,7 @@
     @apply font-alt;
     @apply font-bold;
     @apply text-4xl;
-    @apply text-white;
+    @apply text-gray-900;
     @apply lg:text-6xl;
-    @apply bg-clip-text;
-    @apply drop-shadow-[0_0_15px_rgba(0,0,0,1)];
-    @apply lg:text-transparent;
-    @apply lg:bg-gradient-to-br;
-    @apply from-white;
-    @apply to-neutral-400;
   }
 }

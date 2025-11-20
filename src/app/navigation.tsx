@@ -18,19 +18,19 @@ export async function Navigation() {
         <AccountMenu signOut={signOut} />
       ) : (
         <>
-          <Button variant='sexy' className='hidden flex-shrink-0 lg:flex' asChild>
-            <Link href='/signup'>Get started for free</Link>
+          <Button className='hidden flex-shrink-0 lg:flex bg-blue-600 hover:bg-blue-700 text-white' asChild>
+            <Link href='/signup'>Get Started Free</Link>
           </Button>
           <Sheet>
-            <SheetTrigger className='block lg:hidden'>
+            <SheetTrigger className='block lg:hidden text-gray-900'>
               <IoMenu size={28} />
             </SheetTrigger>
-            <SheetContent className='w-full bg-black'>
+            <SheetContent className='w-full bg-white border-gray-200'>
               <SheetHeader>
                 <Logo />
                 <SheetDescription className='py-8'>
-                  <Button variant='sexy' className='flex-shrink-0' asChild>
-                    <Link href='/signup'>Get started for free</Link>
+                  <Button className='flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white' asChild>
+                    <Link href='/signup'>Get Started Free</Link>
                   </Button>
                 </SheetDescription>
               </SheetHeader>
