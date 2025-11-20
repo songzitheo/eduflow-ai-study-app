@@ -6,8 +6,8 @@ import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-clie
 
 import { generateStudyPlan } from './actions';
 
-export default async function StudyPlanPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function StudyPlanPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const supabase = await createSupabaseServerClient();
 
   // Authenticate user

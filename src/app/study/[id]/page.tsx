@@ -9,8 +9,9 @@ import { DiagnosticQuestionsClient } from './diagnostic-questions-client';
 export default async function StudyDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const supabase = await createSupabaseServerClient();
 
   const {
@@ -22,12 +23,12 @@ export default async function StudyDetailPage({
   }
 
   // Fetch study source
-  const { data: studySource, error: studyError } = await supabase
+  const { data: studySource, error: studyError } = await (supabase
     .from('study_sources')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .eq('user_id', user.id)
-    .single();
+    .single() as any);
 
   if (studyError || !studySource) {
     redirect('/dashboard');
@@ -43,14 +44,14 @@ export default async function StudyDetailPage({
         ai_feedback
       )
     `)
-    .eq('study_source_id', params.id)
+    .eq('study_source_id', id)
     .order('order_index', { ascending: true });
 
   // Check if learning plan exists
   const { data: learningPlan } = await supabase
     .from('study_plans')
     .select('*')
-    .eq('study_source_id', params.id)
+    .eq('study_source_id', id)
     .single();
 
   const hasAnsweredAll = questions?.every(
@@ -85,7 +86,7 @@ export default async function StudyDetailPage({
             
             {learningPlan && (
               <a
-                href={`/study/${params.id}/plan`}
+                href={`/study/${id}/plan`}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
               >
                 <BookOpen className="w-4 h-4" />
@@ -131,7 +132,7 @@ export default async function StudyDetailPage({
               </div>
 
               <DiagnosticQuestionsClient
-                studySourceId={params.id}
+                studySourceId={id}
                 questions={questions || []}
               />
             </div>
@@ -151,7 +152,7 @@ export default async function StudyDetailPage({
                       You&apos;ve completed all diagnostic questions! Generate your personalized learning plan based on your responses.
                     </p>
                     <a
-                      href={`/study/${params.id}/plan`}
+                      href={`/study/${id}/plan`}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
                     >
                       Generate Learning Plan
@@ -175,7 +176,7 @@ export default async function StudyDetailPage({
                       Your personalized learning plan has been generated. View it to see your study schedule and review timeline.
                     </p>
                     <a
-                      href={`/study/${params.id}/plan`}
+                      href={`/study/${id}/plan`}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
                     >
                       View Learning Plan
