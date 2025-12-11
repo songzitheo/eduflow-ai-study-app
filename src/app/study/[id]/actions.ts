@@ -55,7 +55,7 @@ export async function generateDiagnosticQuestions(formData: FormData): Promise<v
       messages: [
         {
           role: 'system',
-          content: `You are an expert educational assessment designer. Generate 8-10 adaptive diagnostic questions based on the provided study material. 
+          content: `You are an expert educational assessment designer. Generate exactly 5 adaptive diagnostic questions based on the provided study material. 
 
 The questions should:
 - Test different cognitive levels (recall, comprehension, application, analysis)
@@ -64,8 +64,8 @@ The questions should:
 - Help identify knowledge gaps
 - Range from basic to advanced difficulty
 
-Return ONLY a JSON array of question strings, nothing else. Example format:
-["Question 1?", "Question 2?", "Question 3?"]`,
+Return ONLY a JSON array of exactly 5 question strings, nothing else. Example format:
+["Question 1?", "Question 2?", "Question 3?", "Question 4?", "Question 5?"]`,
         },
         {
           role: 'user',
