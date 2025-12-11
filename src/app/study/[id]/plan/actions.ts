@@ -148,6 +148,24 @@ Return ONLY valid JSON with this exact structure:
       // Don't throw - plan is created, reviews are optional
     }
 
+    // Send learning plan email with review schedule
+    try {
+      const { sendLearningPlanEmail } = await import('@/features/emails/send-learning-plan-email');
+      await sendLearningPlanEmail({
+        userEmail: user.email!,
+        userName: user.email?.split('@')[0],
+        studyTitle: studySource.title,
+        studySourceId,
+        reviewSchedule: reviews.map((r, index) => ({
+          date: r.scheduled_at,
+          description: `Review #${index + 1} - Spaced repetition session`,
+        })),
+      });
+    } catch (emailError) {
+      console.error('Failed to send learning plan email:', emailError);
+      // Don't throw - plan is created, email is optional
+    }
+
     revalidatePath(`/study/${studySourceId}/plan`);
   } catch (error) {
     console.error('Error generating study plan:', error);
